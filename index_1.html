@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meridian Admissions — Personalized Guidance From Students Who've Been There</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy:   '#0F1F3D',
+            ivory:  '#F8F6F1',
+            gold:   '#C9A84C',
+            slate:  '#64748B',
+            cream:  '#FAFAF9',
+            muted:  '#E8E4DC',
+          },
+          fontFamily: {
+            display: ['Cormorant Garamond', 'Georgia', 'serif'],
+            body:    ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    /* Base */
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background-color: #F8F6F1; color: #0F1F3D; }
+
+    /* Typography overrides */
+    .font-display { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+    /* Gold underline accent for headings */
+    .gold-rule::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 2px;
+      background: #C9A84C;
+      margin-top: 16px;
+    }
+    .gold-rule-center::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 2px;
+      background: #C9A84C;
+      margin: 16px auto 0;
+    }
+
+    /* Nav scroll shadow */
+    .nav-scrolled { box-shadow: 0 1px 24px rgba(15,31,61,0.08); }
+
+    /* CTA button */
+    .btn-primary {
+      display: inline-block;
+      background: #0F1F3D;
+      color: #F8F6F1;
+      padding: 14px 32px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.2s ease, transform 0.15s ease;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: #1a3260; transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1.5px solid #0F1F3D;
+      color: #0F1F3D;
+      padding: 13px 31px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.2s ease, color 0.2s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-outline:hover { background: #0F1F3D; color: #F8F6F1; }
+
+    /* Tier cards */
+    .tier-card {
+      background: #FAFAF9;
+      border: 1px solid #E8E4DC;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .tier-card:hover { box-shadow: 0 8px 40px rgba(15,31,61,0.10); transform: translateY(-2px); }
+    .tier-card.featured {
+      background: #0F1F3D;
+      color: #F8F6F1;
+      border-color: #0F1F3D;
+    }
+    .tier-card.featured .tier-label { color: #C9A84C; }
+    .tier-card.featured .check-icon { color: #C9A84C; }
+    .tier-card.featured .tier-desc { color: #94a3b8; }
+    .tier-card.featured .tier-audience { color: #64748b; border-color: #1e3a5f; }
+
+    /* Testimonial card */
+    .testimonial-card {
+      background: #FAFAF9;
+      border: 1px solid #E8E4DC;
+    }
+
+    /* FAQ accordion */
+    .faq-item { border-bottom: 1px solid #E8E4DC; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-answer.open { max-height: 300px; }
+    .faq-chevron { transition: transform 0.3s ease; }
+    .faq-chevron.rotated { transform: rotate(180deg); }
+
+    /* Stats bar */
+    .stat-number { font-family: 'Cormorant Garamond', serif; }
+
+    /* Scroll fade-in */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Section rhythm */
+    section { padding: 96px 0; }
+    @media (max-width: 768px) { section { padding: 64px 0; } }
+
+    /* Mobile menu */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+  </style>
+</head>
+
+<body>
+
+<!-- ==================== STICKY NAV ==================== -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-ivory/95 backdrop-blur-sm transition-shadow duration-300">
+  <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+    <!-- Logo -->
+    <a href="#" class="font-display text-2xl font-semibold tracking-tight text-navy">
+      Meridian <span class="text-gold font-normal italic">Admissions</span>
+    </a>
+
+    <!-- Desktop nav links -->
+    <div class="hidden md:flex items-center gap-8 text-sm font-body font-medium text-navy/70">
+      <a href="#about" class="hover:text-navy transition-colors">About Us</a>
+      <a href="#services" class="hover:text-navy transition-colors">Services</a>
+      <a href="#testimonials" class="hover:text-navy transition-colors">Results</a>
+      <a href="#faq" class="hover:text-navy transition-colors">FAQ</a>
+    </div>
+
+    <!-- Desktop CTA -->
+    <a href="#consultation" class="hidden md:inline-block btn-primary">
+      Book Free Consultation
+    </a>
+
+    <!-- Mobile hamburger -->
+    <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+      <span class="block w-6 h-0.5 bg-navy"></span>
+      <span class="block w-6 h-0.5 bg-navy"></span>
+      <span class="block w-6 h-0.5 bg-navy"></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden flex-col bg-ivory border-t border-muted px-6 pb-6 gap-4 text-sm font-medium text-navy">
+    <a href="#about" class="block pt-4 hover:text-slate" onclick="closeMobileMenu()">About Us</a>
+    <a href="#services" class="block hover:text-slate" onclick="closeMobileMenu()">Services</a>
+    <a href="#testimonials" class="block hover:text-slate" onclick="closeMobileMenu()">Results</a>
+    <a href="#faq" class="block hover:text-slate" onclick="closeMobileMenu()">FAQ</a>
+    <a href="#consultation" class="btn-primary text-center mt-2 block" onclick="closeMobileMenu()">Book Free Consultation</a>
+  </div>
+</nav>
+
+
+<!-- ==================== HERO ==================== -->
+<section id="home" class="pt-16 min-h-screen flex items-center" style="padding-top:80px; padding-bottom:0;">
+  <div class="max-w-6xl mx-auto px-6 w-full">
+    <div class="grid md:grid-cols-2 gap-16 items-center min-h-[calc(100vh-80px)] py-16">
+
+      <!-- Left: Copy -->
+      <div>
+        <p class="text-gold font-body text-xs font-semibold tracking-[0.15em] uppercase mb-6">
+          Personalized College Admissions Guidance
+        </p>
+
+        <h1 class="font-display text-6xl md:text-7xl font-semibold leading-[1.05] text-navy mb-8">
+          Admitted to Harvard.<br/>
+          <span class="italic font-normal text-slate">Your student</span><br/>
+          could be next.
+        </h1>
+
+        <p class="font-body text-base text-slate leading-relaxed mb-8 max-w-lg">
+          We are two college students who just navigated the admissions process — and succeeded. We provide the personalized, current guidance that large consulting firms simply cannot offer.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 mb-12">
+          <a href="#consultation" class="btn-primary text-center">Book Free 30-Min Consultation</a>
+          <a href="#services" class="btn-outline text-center">View Services & Pricing</a>
+        </div>
+
+        <!-- Social proof strip -->
+        <div class="flex flex-wrap items-center gap-6 pt-8 border-t border-muted">
+          <div class="text-center">
+            <p class="font-display text-3xl font-semibold text-navy">Harvard</p>
+            <p class="font-body text-xs text-slate uppercase tracking-wider mt-0.5">Founder Admitted</p>
+          </div>
+          <div class="w-px h-10 bg-muted hidden sm:block"></div>
+          <div class="text-center">
+            <p class="font-display text-3xl font-semibold text-navy">Berkeley</p>
+            <p class="font-body text-xs text-slate uppercase tracking-wider mt-0.5">Full Scholarship</p>
+          </div>
+          <div class="w-px h-10 bg-muted hidden sm:block"></div>
+          <div class="text-center">
+            <p class="font-display text-3xl font-semibold text-navy">2025</p>
+            <p class="font-body text-xs text-slate uppercase tracking-wider mt-0.5">Admissions Cycle</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Visual panel -->
+      <div class="relative hidden md:block">
+        <!-- Main card -->
+        <div class="bg-navy text-ivory p-10 relative z-10">
+          <p class="font-body text-xs font-semibold tracking-[0.15em] uppercase text-gold mb-6">What sets us apart</p>
+          <ul class="space-y-5">
+            <li class="flex items-start gap-4">
+              <span class="text-gold mt-0.5 flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <div>
+                <p class="font-body font-medium text-ivory text-sm">We applied this cycle</p>
+                <p class="font-body text-xs text-slate mt-0.5">We know exactly what admissions officers reviewed in 2024–2025, not ten years ago.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold mt-0.5 flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <div>
+                <p class="font-body font-medium text-ivory text-sm">Affordable and accessible</p>
+                <p class="font-body text-xs text-slate mt-0.5">Premium guidance without the $5,000–$10,000 price tag of large consulting firms.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold mt-0.5 flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <div>
+                <p class="font-body font-medium text-ivory text-sm">Genuinely personalized</p>
+                <p class="font-body text-xs text-slate mt-0.5">You work directly with us — not a junior consultant at a large firm who met you once.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold mt-0.5 flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <div>
+                <p class="font-body font-medium text-ivory text-sm">Peer-to-peer perspective</p>
+                <p class="font-body text-xs text-slate mt-0.5">Students often open up to peers in ways they never would with an adult consultant.</p>
+              </div>
+            </li>
+          </ul>
+          <div class="mt-8 pt-8 border-t border-navy/40">
+            <p class="font-body text-xs text-slate italic">"We're not selling a formula. We're sharing what actually worked — for us, this year."</p>
+          </div>
+        </div>
+        <!-- Decorative offset border -->
+        <div class="absolute -bottom-4 -right-4 w-full h-full border border-gold/40 -z-0 pointer-events-none"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== CREDIBILITY BAR ==================== -->
+<div class="bg-navy text-ivory">
+  <div class="max-w-6xl mx-auto px-6 py-10">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div>
+        <p class="font-display text-4xl font-semibold text-gold">7+</p>
+        <p class="font-body text-xs text-slate uppercase tracking-wider mt-2">Top-20 Acceptances<br/>Between Our Founders</p>
+      </div>
+      <div>
+        <p class="font-display text-4xl font-semibold text-gold">100%</p>
+        <p class="font-body text-xs text-slate uppercase tracking-wider mt-2">Personalized<br/>Sessions</p>
+      </div>
+      <div>
+        <p class="font-display text-4xl font-semibold text-gold">Free</p>
+        <p class="font-body text-xs text-slate uppercase tracking-wider mt-2">30-Min Consultation<br/>To Start</p>
+      </div>
+      <div>
+        <p class="font-display text-4xl font-semibold text-gold">2025</p>
+        <p class="font-body text-xs text-slate uppercase tracking-wider mt-2">Most Recent<br/>Admissions Cycle</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== ABOUT / FOUNDERS ==================== -->
+<section id="about" class="bg-ivory">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="text-center mb-16 fade-in">
+      <p class="text-gold font-body text-xs font-semibold tracking-[0.15em] uppercase mb-4">Who We Are</p>
+      <h2 class="font-display text-5xl font-semibold text-navy gold-rule-center">
+        Guidance from students who<br class="hidden md:block"/> just walked your path.
+      </h2>
+      <p class="font-body text-slate text-base mt-8 max-w-2xl mx-auto leading-relaxed">
+        We didn't hire consultants to help us get in. We figured it out — and we want to share everything we learned with the next generation of applicants.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10">
+
+      <!-- Hannah Leong -->
+      <div class="fade-in bg-cream border border-muted p-10">
+        <div class="flex items-start gap-6 mb-8">
+          <!-- Avatar placeholder -->
+          <div class="w-20 h-20 bg-navy flex-shrink-0 flex items-center justify-center">
+            <span class="font-display text-3xl text-gold font-semibold">A</span>
+          </div>
+          <div>
+            <h3 class="font-display text-2xl font-semibold text-navy">Founder I</h3>
+            <p class="font-body text-sm text-gold font-medium tracking-wide uppercase mt-1">Harvard University '30</p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0"></div>
+            <p class="font-body text-sm text-navy">Admitted to Harvard and multiple additional top-tier universities</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0"></div>
+            <p class="font-body text-sm text-navy">Deep expertise in essay strategy and personal narrative development</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0"></div>
+            <p class="font-body text-sm text-navy">Guided multiple peers through their application process before founding Meridian</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0"></div>
+            <p class="font-body text-sm text-navy">Specializes in helping students identify and articulate their unique narrative</p>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-8 border-t border-muted">
+          <p class="font-display text-lg italic text-slate leading-relaxed">
+            "The essay isn't about impressing anyone. It's about showing who you actually are — and I can help your student figure out exactly what that looks like on paper."
+          </p>
+        </div>
+      </div>
+
+      <!-- Rohan Jain -->
+      <div class="fade-in bg-cream border border-muted p-10">
+        <div class="flex items-start gap-6 mb-8">
+          <div class="w-20 h-20 bg-navy flex-shrink-0 flex items-center justify-center">
+            <span class="font-display text-3xl text-gold font-semibold">B</span>
+          </div>
+          <div>
+            <h3 class="font-display text-2xl font-semibold text-navy">Founder II</h3>
+            <p class="font-body text-sm text-gold font-medium tracking-wide uppercase mt-1">UC Berkeley '30 — Full Scholarship</p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0"></div>
+            <p class="font-body text-sm text-navy">Attending UC Berkeley on a full merit scholarship</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0"></div>
+            <p class="font-body text-sm text-navy">Expertise in application strategy, activity framing, and competitive positioning</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0"></div>
+            <p class="font-body text-sm text-navy">UC-system specialist — deep knowledge of holistic admissions criteria</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0"></div>
+            <p class="font-body text-sm text-navy">Strong analytical approach to building a compelling, cohesive application profile</p>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-8 border-t border-muted">
+          <p class="font-display text-lg italic text-slate leading-relaxed">
+            "A full scholarship doesn't happen by accident. It requires knowing how to present your story strategically — and that's exactly what we teach."
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Why peer guidance works -->
+    <div class="mt-16 bg-navy text-ivory p-12 fade-in">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-gold font-body text-xs font-semibold tracking-[0.15em] uppercase mb-4">Why Peer Guidance Works</p>
+          <h3 class="font-display text-4xl font-semibold leading-tight mb-6">
+            We remember exactly what it felt like to be where your student is now.
+          </h3>
+          <p class="font-body text-sm text-slate leading-relaxed">
+            Senior consultants at large firms graduated years ago. The admissions landscape has changed dramatically. We know the exact prompts, trends, and strategies from the most recent cycle — because we lived them.
+          </p>
+        </div>
+        <div class="space-y-6">
+          <div class="border-l-2 border-gold pl-6">
+            <p class="font-body text-sm font-medium text-ivory mb-1">We know this year's Common App prompts cold.</p>
+            <p class="font-body text-xs text-slate">Not from a manual — from having written and revised dozens of drafts ourselves.</p>
+          </div>
+          <div class="border-l-2 border-gold pl-6">
+            <p class="font-body text-sm font-medium text-ivory mb-1">We know how to talk to a stressed junior.</p>
+            <p class="font-body text-xs text-slate">Your student will open up to peers in ways they rarely do with adult consultants.</p>
+          </div>
+          <div class="border-l-2 border-gold pl-6">
+            <p class="font-body text-sm font-medium text-ivory mb-1">We built our own profiles from scratch.</p>
+            <p class="font-body text-xs text-slate">No legacy admissions, no private school advantages — we earned it on the merits.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== SERVICES ==================== -->
+<section id="services" class="bg-cream">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="text-center mb-16 fade-in">
+      <p class="text-gold font-body text-xs font-semibold tracking-[0.15em] uppercase mb-4">Services & Pricing</p>
+      <h2 class="font-display text-5xl font-semibold text-navy gold-rule-center">
+        Choose the level of support<br class="hidden md:block"/> your student needs.
+      </h2>
+      <p class="font-body text-slate text-base mt-8 max-w-xl mx-auto leading-relaxed">
+        Every package begins with a free 30-minute consultation — no obligation, no pressure.
+      </p>
+    </div>
+
+    <!-- Free consultation callout -->
+    <div class="bg-gold/10 border border-gold/30 p-6 text-center mb-12 fade-in">
+      <p class="font-body text-sm text-navy">
+        <strong class="font-semibold">All clients begin with a complimentary 30-minute strategy consultation.</strong>
+        <span class="text-slate ml-1">We'll assess your student's profile and determine the right level of support before you commit to anything.</span>
+      </p>
+    </div>
+
+    <!-- Tier cards grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Tier 1: Essay Polish -->
+      <div class="tier-card p-8 fade-in">
+        <p class="tier-label font-body text-xs font-semibold tracking-[0.12em] uppercase text-gold mb-4">Tier 1</p>
+        <h3 class="font-display text-2xl font-semibold text-navy mb-2">Essay Polish</h3>
+        <p class="tier-desc font-body text-xs text-slate mb-6 leading-relaxed">For students who have finished writing and want an experienced, detailed review.</p>
+
+        <div class="mb-6">
+          <span class="font-display text-4xl font-semibold text-navy">$150</span>
+          <span class="font-body text-xs text-slate ml-1">per essay</span>
+        </div>
+
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-2.5">
+            <svg class="check-icon w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-body text-sm text-navy">2-round review process</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <svg class="check-icon w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-body text-sm text-navy">Initial structural edit with detailed notes</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <svg class="check-icon w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-body text-sm text-navy">Follow-up review after revisions</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <svg class="check-icon w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-body text-sm text-navy">Tone, voice, and narrative feedback</span>
+          </li>
+        </ul>
+
+        <div class="tier-audience border-t border-muted pt-4">
+          <p class="font-body text-xs text-slate italic">Best for: Students who have drafted essays and need targeted, expert feedback before submitting.</p>
+        </div>
+      </div>
+
+      <!-- Tier 2: Strategic Planning -->
+      <div class="tier-card p-8 fade-in">
+        <p class="tier-label font-body text-xs font-semibold tracking-[0.12em] uppercase text-gold mb-4">Tier 2</p>
+        <h3 class="font-display text-2xl font-semibold text-navy mb-2">Strategic Planning</h3>
+        <p class="tier-desc font-body text-xs text-slate mb-6 leading-relaxed">For students at the very beginning of their application journey.</p>
+
+        <div class="mb-6">
+          <span class="font-display text-4xl font-semibold text-navy">$250</span>
+          <span class="font-body text-xs text-slate ml-1">per package</span>
+        </div>
+
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-2.5">
+            <svg class="check-icon w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-body text-sm text-navy">Two 30-min strategy sessions</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <svg class="check-icon w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-body text-sm text-navy">Essay topic brainstorming</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <svg class="check-icon w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-body text-sm text-navy">Application narrative development</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <svg class="check-icon w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-body text-sm text-navy">School list and positioning advice</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <svg class="check-icon w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-body text-sm text-navy">Written session summary provided</span>
+          </li>
+        </ul>
+
+        <div class="tier-audience border-t border-muted pt-4">
+          <p class="font-body text-xs text-slate italic">Best for: Rising seniors who want a clear strategy before they start writing.</p>
+        </div>
+      </div>
+
+      <!-- Tier 3: Comprehensive — FEATURED -->
+      <div class="tier-card featured p-8 fade-in relative">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold px-4 py-1">
+          <p class="font-body text-xs font-semibold text-navy uppercase tracking-wide">Most Popular</p>
+        </div>
+        <p class="tier-label font-body text-xs font-semibold tracking-[0.12em] uppercase mb-4">Tier 3</p>
+        <h3 class="font-display text-2xl font-semibold mb-2">Comprehensive Package</h3>
+        <p class="tier-desc font-body text-xs mb-6 leading-relaxed">Planning and essay review, combined into one complete experience.</p>
+
+        <div class="mb-6">
+          <span class="font-display text-4xl font-semibold">$600</span>
+          <span class="font-body text-xs text-slate ml-1">per student</span>
+        </div>
+
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-2.5">
+            <svg class="check-icon w-4 h-4 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-body text-sm">Everything in Tier 2 (Strategic Planning)</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <svg class="check-icon w-4 h-4 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-body text-sm">5 essay reviews (2 rounds each)</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <svg class="check-icon w-4 h-4 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-body text-sm">Resume review included at no extra charge</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <svg class="check-icon w-4 h-4 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-body text-sm">Covers strategy through final draft</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <svg class="check-icon w-4 h-4 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-body text-sm">Async messaging between sessions</span>
+          </li>
+        </ul>
+
+        <div class="tier-audience border-t border-navy/40 pt-4">
+          <p class="font-body text-xs italic">Best for: Students who want full support from strategy through final essays.</p>
+        </div>
+      </div>
+
+      <!-- Tier 4: Common App Package -->
+      <div class="tier-card p-8 fade-in">
+        <p class="tier-label font-body text-xs font-semibold tracking-[0.12em] uppercase text-gold mb-4">Tier 4</p>
+        <h3 class="font-display text-2xl font-semibold text-navy mb-2">Common App Package</h3>
+        <p class="tier-desc font-body text-xs text-slate mb-6 leading-relaxed">Complete end-to-end support for families who want nothing left to chance.</p>
+
+        <div class="mb-6">
+          <span class="font-display text-4xl font-semibold text-navy">$1,200</span>
+          <span class="font-body text-xs text-slate ml-1">per student</span>
+        </div>
+
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-2.5">
+            <svg class="check-icon w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-body text-sm text-navy">Everything in Tier 3</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <svg class="check-icon w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-body text-sm text-navy">Full Common App audit before submission</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <svg class="check-icon w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-body text-sm text-navy">Activities list review & optimization</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <svg class="check-icon w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-body text-sm text-navy">Honors & awards section review</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <svg class="check-icon w-4 h-4 text-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-body text-sm text-navy">Additional Information section review</span>
+          </li>
+        </ul>
+
+        <div class="tier-audience border-t border-muted pt-4">
+          <p class="font-body text-xs text-slate italic">Best for: Families who want every element of the application reviewed before submission.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA below services -->
+    <div class="text-center mt-14 fade-in">
+      <p class="font-body text-slate text-sm mb-6">Not sure which tier is right? That's exactly what the free consultation is for.</p>
+      <a href="#consultation" class="btn-primary">Book Your Free Consultation</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== HOW IT WORKS ==================== -->
+<section class="bg-ivory">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16 fade-in">
+      <p class="text-gold font-body text-xs font-semibold tracking-[0.15em] uppercase mb-4">The Process</p>
+      <h2 class="font-display text-5xl font-semibold text-navy gold-rule-center">Simple, clear, and built around your student.</h2>
+    </div>
+
+    <div class="grid md:grid-cols-4 gap-0 relative fade-in">
+      <!-- Connector line -->
+      <div class="hidden md:block absolute top-10 left-[12.5%] right-[12.5%] h-px bg-muted z-0"></div>
+
+      <div class="relative z-10 text-center px-6 mb-10 md:mb-0">
+        <div class="w-20 h-20 bg-navy text-ivory font-display text-3xl font-semibold flex items-center justify-center mx-auto mb-6">1</div>
+        <h4 class="font-display text-xl font-semibold text-navy mb-3">Free Consultation</h4>
+        <p class="font-body text-sm text-slate leading-relaxed">We learn about your student's goals, strengths, and timeline — and recommend the right service tier.</p>
+      </div>
+
+      <div class="relative z-10 text-center px-6 mb-10 md:mb-0">
+        <div class="w-20 h-20 bg-navy text-ivory font-display text-3xl font-semibold flex items-center justify-center mx-auto mb-6">2</div>
+        <h4 class="font-display text-xl font-semibold text-navy mb-3">Strategy Session</h4>
+        <p class="font-body text-sm text-slate leading-relaxed">We map out the application narrative, essay themes, school positioning, and a realistic timeline.</p>
+      </div>
+
+      <div class="relative z-10 text-center px-6 mb-10 md:mb-0">
+        <div class="w-20 h-20 bg-navy text-ivory font-display text-3xl font-semibold flex items-center justify-center mx-auto mb-6">3</div>
+        <h4 class="font-display text-xl font-semibold text-navy mb-3">Review & Revise</h4>
+        <p class="font-body text-sm text-slate leading-relaxed">We provide detailed, honest feedback on drafts — focusing on voice, story, and what truly resonates with readers.</p>
+      </div>
+
+      <div class="relative z-10 text-center px-6">
+        <div class="w-20 h-20 bg-gold text-navy font-display text-3xl font-semibold flex items-center justify-center mx-auto mb-6">✓</div>
+        <h4 class="font-display text-xl font-semibold text-navy mb-3">Submit With Confidence</h4>
+        <p class="font-body text-sm text-slate leading-relaxed">Your student submits an application that genuinely represents who they are — strategically presented.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== TESTIMONIALS ==================== -->
+<section id="testimonials" class="bg-navy text-ivory">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16 fade-in">
+      <p class="text-gold font-body text-xs font-semibold tracking-[0.15em] uppercase mb-4">What Families Say</p>
+      <h2 class="font-display text-5xl font-semibold gold-rule-center">Real results from<br class="hidden md:block"/> real students.</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <div class="testimonial-card bg-navy/50 border border-white/10 p-8 fade-in">
+        <div class="flex mb-4">
+          <span class="text-gold text-lg">★★★★★</span>
+        </div>
+        <p class="font-display text-xl italic text-ivory leading-relaxed mb-6">
+          "My daughter's essays were completely transformed after working with them. She said it was the first time anyone had really understood what she was trying to say."
+        </p>
+        <div class="border-t border-white/10 pt-5">
+          <p class="font-body text-sm font-medium text-ivory">Parent of a 2025 Applicant</p>
+          <p class="font-body text-xs text-slate mt-1">Student admitted to UC Berkeley, Emory, and Notre Dame</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card bg-navy/50 border border-white/10 p-8 fade-in">
+        <div class="flex mb-4">
+          <span class="text-gold text-lg">★★★★★</span>
+        </div>
+        <p class="font-display text-xl italic text-ivory leading-relaxed mb-6">
+          "We had hired a large consulting firm before and felt lost in the crowd. With Meridian, our son had direct, personal attention every single session."
+        </p>
+        <div class="border-t border-white/10 pt-5">
+          <p class="font-body text-sm font-medium text-ivory">Parent of a 2025 Applicant</p>
+          <p class="font-body text-xs text-slate mt-1">Student admitted to University of Michigan, USC, and Purdue</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card bg-navy/50 border border-white/10 p-8 fade-in">
+        <div class="flex mb-4">
+          <span class="text-gold text-lg">★★★★★</span>
+        </div>
+        <p class="font-display text-xl italic text-ivory leading-relaxed mb-6">
+          "I was skeptical at first — they're students too. But that's exactly what made the difference. They gave my son advice that actually reflected how admissions works today."
+        </p>
+        <div class="border-t border-white/10 pt-5">
+          <p class="font-body text-sm font-medium text-ivory">Parent of a 2025 Applicant</p>
+          <p class="font-body text-xs text-slate mt-1">Student admitted to Carnegie Mellon and Boston University</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-12 fade-in">
+      <p class="font-body text-sm text-slate italic">Testimonials represent early client feedback. Additional references available upon request.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== OBJECTION HANDLER ==================== -->
+<section class="bg-ivory">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16 fade-in">
+      <p class="text-gold font-body text-xs font-semibold tracking-[0.15em] uppercase mb-4">Why Choose Us</p>
+      <h2 class="font-display text-5xl font-semibold text-navy gold-rule-center">Your questions, answered honestly.</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 fade-in">
+
+      <div class="p-8 border border-muted">
+        <div class="w-10 h-10 bg-gold/15 flex items-center justify-center mb-6">
+          <svg class="w-5 h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+          </svg>
+        </div>
+        <h4 class="font-display text-xl font-semibold text-navy mb-3">"Are they experienced enough?"</h4>
+        <p class="font-body text-sm text-slate leading-relaxed">We just completed the process ourselves — and succeeded at the highest level. Our experience is current, direct, and deeply personal. No textbook knowledge; we lived every step of this.</p>
+      </div>
+
+      <div class="p-8 border border-muted">
+        <div class="w-10 h-10 bg-gold/15 flex items-center justify-center mb-6">
+          <svg class="w-5 h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14l-4-4 1.41-1.41L11 13.17l6.59-6.59L19 8l-8 8z"/>
+          </svg>
+        </div>
+        <h4 class="font-display text-xl font-semibold text-navy mb-3">"Will they have time for us?"</h4>
+        <p class="font-body text-sm text-slate leading-relaxed">We limit the number of students we take each cycle intentionally. When you work with us, you have our full, undivided attention — not a caseload of 50 families.</p>
+      </div>
+
+      <div class="p-8 border border-muted">
+        <div class="w-10 h-10 bg-gold/15 flex items-center justify-center mb-6">
+          <svg class="w-5 h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h.5v3c4.86-2.34 8-7 8-11.5C20 5.81 16.19 2 11.5 2zm1 14.5h-2v-2h2v2zm0-4h-2c0-3.25 3-3 3-5 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.5-3 2.75-3 5z"/>
+          </svg>
+        </div>
+        <h4 class="font-display text-xl font-semibold text-navy mb-3">"Why not hire a professional firm?"</h4>
+        <p class="font-body text-sm text-slate leading-relaxed">Large firms charge $3,000–$10,000+ and often assign junior consultants who graduated years ago. We offer current, personal guidance at a fraction of the price — with Harvard and Berkeley admissions as proof of concept.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== FAQ ==================== -->
+<section id="faq" class="bg-cream">
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="text-center mb-16 fade-in">
+      <p class="text-gold font-body text-xs font-semibold tracking-[0.15em] uppercase mb-4">FAQ</p>
+      <h2 class="font-display text-5xl font-semibold text-navy gold-rule-center">Common questions from families like yours.</h2>
+    </div>
+
+    <div class="space-y-0 fade-in">
+
+      <div class="faq-item py-6 cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between gap-4">
+          <h4 class="font-body text-base font-medium text-navy">How does the free consultation work?</h4>
+          <svg class="faq-chevron w-5 h-5 text-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-answer">
+          <p class="font-body text-sm text-slate leading-relaxed pt-4">The free consultation is a 30-minute video call where we get to know your student — their academic background, extracurricular activities, college targets, and timeline. We'll give you an honest assessment of where they stand and recommend the right tier of service. There is absolutely no obligation.</p>
+        </div>
+      </div>
+
+      <div class="faq-item py-6 cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between gap-4">
+          <h4 class="font-body text-base font-medium text-navy">Do you guarantee admission to specific schools?</h4>
+          <svg class="faq-chevron w-5 h-5 text-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-answer">
+          <p class="font-body text-sm text-slate leading-relaxed pt-4">No, and we never will — and you should be cautious of any service that does. College admissions is a holistic, unpredictable process. What we guarantee is our full effort, honest guidance, and our best judgment applied to your student's specific situation. Our goal is to help your student put forward the strongest possible application.</p>
+        </div>
+      </div>
+
+      <div class="faq-item py-6 cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between gap-4">
+          <h4 class="font-body text-base font-medium text-navy">How do sessions work — in person or virtual?</h4>
+          <svg class="faq-chevron w-5 h-5 text-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-answer">
+          <p class="font-body text-sm text-slate leading-relaxed pt-4">All sessions are conducted via video call (Zoom or Google Meet), which means we can work with students anywhere. Between sessions, we're available via email or messaging for quick questions and to review drafts.</p>
+        </div>
+      </div>
+
+      <div class="faq-item py-6 cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between gap-4">
+          <h4 class="font-body text-base font-medium text-navy">When is the best time to start?</h4>
+          <svg class="faq-chevron w-5 h-5 text-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-answer">
+          <p class="font-body text-sm text-slate leading-relaxed pt-4">For most families, summer before senior year is the ideal window — there's time to develop a strong strategy before the fall application season begins. However, we work with students at all stages, including those who are already in the middle of writing. Reach out and we'll tell you honestly what's achievable given your timeline.</p>
+        </div>
+      </div>
+
+      <div class="faq-item py-6 cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between gap-4">
+          <h4 class="font-body text-base font-medium text-navy">How many students do you work with at once?</h4>
+          <svg class="faq-chevron w-5 h-5 text-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-answer">
+          <p class="font-body text-sm text-slate leading-relaxed pt-4">We deliberately cap our client load to ensure every student receives our full attention. We are not a volume-based service. Availability is limited each cycle, which is why we recommend booking a consultation as early as possible to secure a spot.</p>
+        </div>
+      </div>
+
+      <div class="faq-item py-6 cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between gap-4">
+          <h4 class="font-body text-base font-medium text-navy">Do you work with students applying to UC schools?</h4>
+          <svg class="faq-chevron w-5 h-5 text-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-answer">
+          <p class="font-body text-sm text-slate leading-relaxed pt-4">Absolutely. One of our founders attended UC Berkeley on a full scholarship, giving us firsthand knowledge of the UC system's unique application requirements and PIQs. We provide strong guidance for students applying to both UC and private universities.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== CONSULTATION CTA ==================== -->
+<section id="consultation" class="bg-navy text-ivory">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <p class="text-gold font-body text-xs font-semibold tracking-[0.15em] uppercase mb-6 fade-in">Start Here</p>
+    <h2 class="font-display text-5xl md:text-6xl font-semibold leading-tight mb-8 fade-in">
+      Book your free<br/> 30-minute consultation.
+    </h2>
+    <p class="font-body text-slate text-base leading-relaxed max-w-2xl mx-auto mb-12 fade-in">
+      No sales pitch. No pressure. We'll spend 30 minutes learning about your student, assessing their profile honestly, and recommending a clear next step — whether that's working with us or not.
+    </p>
+
+    <!-- Booking form placeholder -->
+    <div class="bg-white/5 border border-white/10 p-10 max-w-xl mx-auto fade-in">
+      <h3 class="font-display text-2xl font-semibold mb-8 text-ivory">Request a Consultation</h3>
+
+      <div class="space-y-4 text-left">
+        <div>
+          <label class="font-body text-xs font-medium text-slate uppercase tracking-wider block mb-2">Parent Name</label>
+          <input type="text" placeholder="Your full name" class="w-full bg-white/5 border border-white/15 text-ivory placeholder-slate/50 px-4 py-3 font-body text-sm focus:outline-none focus:border-gold/60 transition-colors" />
+        </div>
+        <div>
+          <label class="font-body text-xs font-medium text-slate uppercase tracking-wider block mb-2">Email Address</label>
+          <input type="email" placeholder="your@email.com" class="w-full bg-white/5 border border-white/15 text-ivory placeholder-slate/50 px-4 py-3 font-body text-sm focus:outline-none focus:border-gold/60 transition-colors" />
+        </div>
+        <div>
+          <label class="font-body text-xs font-medium text-slate uppercase tracking-wider block mb-2">Student's Grade</label>
+          <select class="w-full bg-navy border border-white/15 text-ivory px-4 py-3 font-body text-sm focus:outline-none focus:border-gold/60 transition-colors appearance-none cursor-pointer">
+            <option value="" disabled selected style="color:#64748b">Select current grade</option>
+            <option>Rising Junior (Class of 2027)</option>
+            <option>Rising Senior (Class of 2026)</option>
+            <option>Current Senior (Class of 2026) — applying now</option>
+          </select>
+        </div>
+        <div>
+          <label class="font-body text-xs font-medium text-slate uppercase tracking-wider block mb-2">How Did You Hear About Us?</label>
+          <input type="text" placeholder="Parent group, friend referral, WeChat, etc." class="w-full bg-white/5 border border-white/15 text-ivory placeholder-slate/50 px-4 py-3 font-body text-sm focus:outline-none focus:border-gold/60 transition-colors" />
+        </div>
+        <div>
+          <label class="font-body text-xs font-medium text-slate uppercase tracking-wider block mb-2">Anything Else You'd Like Us to Know? (Optional)</label>
+          <textarea rows="3" placeholder="Student's target schools, current activities, specific concerns..." class="w-full bg-white/5 border border-white/15 text-ivory placeholder-slate/50 px-4 py-3 font-body text-sm focus:outline-none focus:border-gold/60 transition-colors resize-none"></textarea>
+        </div>
+      </div>
+
+      <button class="btn-primary w-full mt-8 py-4 text-base" style="background:#C9A84C; color:#0F1F3D;">
+        Request My Free Consultation →
+      </button>
+      <p class="font-body text-xs text-slate mt-4">We'll respond within 24 hours to schedule your session.</p>
+    </div>
+
+    <!-- Alternative contact -->
+    <div class="mt-12 fade-in">
+      <p class="font-body text-sm text-slate">Prefer to reach out directly?</p>
+      <p class="font-body text-base text-ivory mt-2">
+        Email us at <a href="mailto:hello@meridianadmissions.com" class="text-gold hover:underline">hello@meridianadmissions.com</a>
+      </p>
+      <p class="font-body text-xs text-slate mt-2">We're also available on WeChat — reach out for our contact ID.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="bg-navy border-t border-white/10 text-ivory">
+  <div class="max-w-6xl mx-auto px-6 py-12">
+    <div class="grid md:grid-cols-3 gap-12 mb-12">
+      <!-- Brand -->
+      <div>
+        <p class="font-display text-2xl font-semibold mb-4">Meridian <span class="italic font-normal text-gold">Admissions</span></p>
+        <p class="font-body text-sm text-slate leading-relaxed">Personalized college admissions guidance from students who just navigated the process — and succeeded.</p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <p class="font-body text-xs font-semibold uppercase tracking-wider text-slate mb-4">Navigation</p>
+        <ul class="space-y-3">
+          <li><a href="#about" class="font-body text-sm text-ivory/70 hover:text-ivory transition-colors">About Us</a></li>
+          <li><a href="#services" class="font-body text-sm text-ivory/70 hover:text-ivory transition-colors">Services</a></li>
+          <li><a href="#testimonials" class="font-body text-sm text-ivory/70 hover:text-ivory transition-colors">Results</a></li>
+          <li><a href="#faq" class="font-body text-sm text-ivory/70 hover:text-ivory transition-colors">FAQ</a></li>
+          <li><a href="#consultation" class="font-body text-sm text-ivory/70 hover:text-ivory transition-colors">Book Consultation</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <p class="font-body text-xs font-semibold uppercase tracking-wider text-slate mb-4">Contact</p>
+        <ul class="space-y-3">
+          <li><a href="mailto:hello@meridianadmissions.com" class="font-body text-sm text-ivory/70 hover:text-gold transition-colors">hello@meridianadmissions.com</a></li>
+          <li><p class="font-body text-sm text-ivory/70">WeChat available upon request</p></li>
+        </ul>
+        <div class="mt-6">
+          <a href="#consultation" class="btn-outline text-ivory border-white/30 hover:bg-white/10 hover:border-white/60 text-xs" style="padding:10px 20px;">
+            Book Free Consultation
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="font-body text-xs text-slate">© 2025 Meridian Admissions. All rights reserved.</p>
+      <p class="font-body text-xs text-slate text-center md:text-right">We do not guarantee admission outcomes. Results vary based on individual student profiles and institutional decisions beyond our control.</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+  // Nav scroll shadow
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      navbar.classList.add('nav-scrolled');
+    } else {
+      navbar.classList.remove('nav-scrolled');
+    }
+  });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+  }
+
+  // FAQ accordion
+  function toggleFaq(item) {
+    const answer = item.querySelector('.faq-answer');
+    const chevron = item.querySelector('.faq-chevron');
+    const isOpen = answer.classList.contains('open');
+
+    // Close all others
+    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-chevron').forEach(c => c.classList.remove('rotated'));
+
+    if (!isOpen) {
+      answer.classList.add('open');
+      chevron.classList.add('rotated');
+    }
+  }
+
+  // Scroll fade-in observer
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80 * (i % 4));
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  fadeEls.forEach(el => observer.observe(el));
+
+  // Consultation form submit (placeholder behavior)
+  document.querySelector('button[style*="C9A84C"]').addEventListener('click', function() {
+    const inputs = document.querySelectorAll('#consultation input, #consultation textarea, #consultation select');
+    let filled = true;
+    inputs.forEach(input => {
+      if (!input.value && !input.hasAttribute('rows')) filled = false;
+    });
+    alert('Thank you! We\'ll be in touch within 24 hours to schedule your free consultation.');
+  });
+</script>
+
+</body>
+</html>
