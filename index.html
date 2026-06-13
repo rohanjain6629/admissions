@@ -400,11 +400,11 @@
 <div class="mt-16 fade-in px-4">
   <div class="bg-navy text-ivory px-10 py-8 md:px-14 md:py-10 rounded-[2rem] border border-gold/20 shadow-[0_24px_60px_rgba(15,31,61,0.16)]">
     
-    <!-- Single horizontal row: label + headline | bullet | bullet | bullet -->
-    <div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-8 items-center">
+    <!-- 4-col on large screens, 2x2 on md, stacked on mobile -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-8 items-stretch">
       
       <!-- Col 1: label + headline -->
-      <div>
+      <div class="py-2">
         <p class="text-gold font-body text-xs font-semibold tracking-[0.15em] uppercase mb-3">Why Peer Guidance Works</p>
         <h3 class="font-display text-2xl md:text-3xl font-semibold leading-tight">
           We remember exactly what it felt like to be where your student is now.
@@ -412,21 +412,21 @@
       </div>
 
       <!-- Col 2 -->
-      <div class="border-l-2 border-gold pl-6">
-        <p class="font-body text-sm font-medium text-ivory mb-1">We know this year's Common App prompts cold.</p>
-        <p class="font-body text-xs text-slate">Not from a manual — from having written and revised dozens of drafts ourselves.</p>
+      <div class="border-l-2 border-gold/40 pl-6 py-2">
+        <p class="font-body text-sm font-medium text-ivory mb-2">We know this year's Common App prompts cold.</p>
+        <p class="font-body text-xs text-ivory/70">Not from a manual — from having written and revised dozens of drafts ourselves.</p>
       </div>
 
       <!-- Col 3 -->
-      <div class="border-l-2 border-gold pl-6">
-        <p class="font-body text-sm font-medium text-ivory mb-1">We know how to talk to a stressed junior.</p>
-        <p class="font-body text-xs text-slate">Your student will open up to peers in ways they rarely do with adult consultants.</p>
+      <div class="border-l-2 border-gold/40 pl-6 py-2">
+        <p class="font-body text-sm font-medium text-ivory mb-2">We know how to talk to a stressed junior.</p>
+        <p class="font-body text-xs text-ivory/70">Your student will open up to peers in ways they rarely do with adult consultants.</p>
       </div>
 
       <!-- Col 4 -->
-      <div class="border-l-2 border-gold pl-6">
-        <p class="font-body text-sm font-medium text-ivory mb-1">We built our own profiles from scratch.</p>
-        <p class="font-body text-xs text-slate">No legacy admissions, no private school advantages — we earned it on the merits.</p>
+      <div class="border-l-2 border-gold/40 pl-6 py-2">
+        <p class="font-body text-sm font-medium text-ivory mb-2">We built our own profiles from scratch.</p>
+        <p class="font-body text-xs text-ivory/70">No legacy admissions, no private school advantages — we earned it on the merits.</p>
       </div>
 
     </div>
