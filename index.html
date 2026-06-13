@@ -871,45 +871,50 @@
 </section>
 
 <h2 class="font-display text-5xl md:text-6xl font-semibold leading-tight mb-8 fade-in">
-      Have Questions?<br/> Contact Us!
-      <div style="height: 60px;"></div>
-    <!-- Booking form placeholder -->
-    <div class="bg-white/5 border border-white/10 p-10 max-w-xl mx-auto fade-in">
-      <h3 class="font-display text-2xl font-semibold mb-8 text-ivory">Contact Form</h3>
+  Have Questions?<br/> Contact Us!
+</h2>
 
-      <div class="space-y-4 text-left">
-        <div>
-          <label class="font-body text-xs font-medium text-slate uppercase tracking-wider block mb-2">Name</label>
-          <input type="text" placeholder="Your full name" class="w-full bg-white/5 border border-white/15 text-ivory placeholder-slate/50 px-4 py-3 font-body text-sm focus:outline-none focus:border-gold/60 transition-colors" />
-        </div>
-        <div>
-          <label class="font-body text-xs font-medium text-slate uppercase tracking-wider block mb-2">Email Address</label>
-          <input type="email" placeholder="your@email.com" class="w-full bg-white/5 border border-white/15 text-ivory placeholder-slate/50 px-4 py-3 font-body text-sm focus:outline-none focus:border-gold/60 transition-colors" />
-        </div>
-        <div>
-          <label class="font-body text-xs font-medium text-slate uppercase tracking-wider block mb-2">Student's Grade</label>
-          <select class="w-full bg-navy border border-white/15 text-ivory px-4 py-3 font-body text-sm focus:outline-none focus:border-gold/60 transition-colors appearance-none cursor-pointer">
-            <option value="" disabled selected style="color:#64748b">Select current grade</option>
-            <option>Rising Senior (Class of 2027)</option>
-            <option>Rising Junior (Class of 2028)</option>
-            <option>Other(include grade in "anything else you'd like us to know") </option>
-          </select>
-        </div>
-        <div>
-          <label class="font-body text-xs font-medium text-slate uppercase tracking-wider block mb-2">How Did You Hear About Us?</label>
-          <input type="text" placeholder="Parent group, friend referral, WeChat, etc." class="w-full bg-white/5 border border-white/15 text-ivory placeholder-slate/50 px-4 py-3 font-body text-sm focus:outline-none focus:border-gold/60 transition-colors" />
-        </div>
-        <div>
-          <label class="font-body text-xs font-medium text-slate uppercase tracking-wider block mb-2">Anything Else You'd Like Us to Know? (Optional)</label>
-          <textarea rows="3" placeholder="Student's target schools, current activities, specific concerns..." class="w-full bg-white/5 border border-white/15 text-ivory placeholder-slate/50 px-4 py-3 font-body text-sm focus:outline-none focus:border-gold/60 transition-colors resize-none"></textarea>
-        </div>
+<div style="height: 60px;"></div>
+
+<!-- Contact form -->
+<div class="bg-white/5 border border-white/10 p-10 max-w-xl mx-auto fade-in">
+  <h3 class="font-display text-2xl font-semibold mb-8 text-ivory">Contact Form</h3>
+
+  <form action="https://formspree.io/f/xxxxxxxx" method="POST">
+    <div class="space-y-4 text-left">
+      <div>
+        <label class="font-body text-xs font-medium text-slate uppercase tracking-wider block mb-2">Name</label>
+        <input type="text" name="name" placeholder="Your full name" class="w-full bg-white/5 border border-white/15 text-ivory placeholder-slate/50 px-4 py-3 font-body text-sm focus:outline-none focus:border-gold/60 transition-colors" required />
       </div>
-
-      <button class="btn-primary w-full mt-8 py-4 text-base" style="background:#C9A84C; color:#0F1F3D;">
-        Send →
-      </button>
-      <p class="font-body text-xs text-slate mt-4">We'll respond within 48 hours.</p>
+      <div>
+        <label class="font-body text-xs font-medium text-slate uppercase tracking-wider block mb-2">Email Address</label>
+        <input type="email" name="email" placeholder="your@email.com" class="w-full bg-white/5 border border-white/15 text-ivory placeholder-slate/50 px-4 py-3 font-body text-sm focus:outline-none focus:border-gold/60 transition-colors" required />
+      </div>
+      <div>
+        <label class="font-body text-xs font-medium text-slate uppercase tracking-wider block mb-2">Student's Grade</label>
+        <select name="grade" class="w-full bg-navy border border-white/15 text-ivory px-4 py-3 font-body text-sm focus:outline-none focus:border-gold/60 transition-colors appearance-none cursor-pointer">
+          <option value="" disabled selected style="color:#64748b">Select current grade</option>
+          <option>Rising Senior (Class of 2027)</option>
+          <option>Rising Junior (Class of 2028)</option>
+          <option>Other (include grade in "anything else you'd like us to know")</option>
+        </select>
+      </div>
+      <div>
+        <label class="font-body text-xs font-medium text-slate uppercase tracking-wider block mb-2">How Did You Hear About Us?</label>
+        <input type="text" name="referral_source" placeholder="Parent group, friend referral, WeChat, etc." class="w-full bg-white/5 border border-white/15 text-ivory placeholder-slate/50 px-4 py-3 font-body text-sm focus:outline-none focus:border-gold/60 transition-colors" />
+      </div>
+      <div>
+        <label class="font-body text-xs font-medium text-slate uppercase tracking-wider block mb-2">Anything Else You'd Like Us to Know? (Optional)</label>
+        <textarea name="message" rows="3" placeholder="Student's target schools, current activities, specific concerns..." class="w-full bg-white/5 border border-white/15 text-ivory placeholder-slate/50 px-4 py-3 font-body text-sm focus:outline-none focus:border-gold/60 transition-colors resize-none"></textarea>
+      </div>
     </div>
+
+    <button type="submit" class="btn-primary w-full mt-8 py-4 text-base" style="background:#C9A84C; color:#0F1F3D;">
+      Send →
+    </button>
+    <p class="font-body text-xs text-slate mt-4">We'll respond within 48 hours.</p>
+  </form>
+</div>
 
     <!-- Alternative contact -->
     <div class="mt-12 fade-in">
@@ -917,7 +922,7 @@
       <p class="font-body text-base text-ivory mt-2">
         Email us at <a href="mailto:lj.admissionscollege@gmail.com" class="text-gold hover:underline">lj.admissionscollege@gmail.com</a>
       </p>
-      <p class="font-body text-xs text-slate mt-2">We're also available on WeChat & WhatsApp — reach out for our contact ID.</p>
+      <p class="font-body text-xs text-slate mt-2">We're also available on WeChat & WhatsApp, please reach out for our contact ID.</p>
     </div>
   </div>
 </section>
